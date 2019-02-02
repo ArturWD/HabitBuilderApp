@@ -200,6 +200,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902021500519_InitialCreate.cs" />
+    <Compile Include="Migrations\201902021500519_InitialCreate.Designer.cs">
+      <DependentUpon>201902021500519_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902021520007_initial.cs" />
+    <Compile Include="Migrations\201902021520007_initial.Designer.cs">
+      <DependentUpon>201902021520007_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902021525204_userProfile.cs" />
+    <Compile Include="Migrations\201902021525204_userProfile.Designer.cs">
+      <DependentUpon>201902021525204_userProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902021539279_userProfile1.cs" />
+    <Compile Include="Migrations\201902021539279_userProfile1.Designer.cs">
+      <DependentUpon>201902021539279_userProfile1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -281,6 +298,30 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902021500519_InitialCreate.resx">
+      <DependentUpon>201902021500519_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021520007_initial.resx">
+      <DependentUpon>201902021520007_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021525204_userProfile.resx">
+      <DependentUpon>201902021525204_userProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021539279_userProfile1.resx">
+      <DependentUpon>201902021539279_userProfile1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HabitBuilder.Core\HabitBuilder.Core.csproj">
+      <Project>{2c796c4b-936d-4df4-8643-0dc28bc52de1}</Project>
+      <Name>HabitBuilder.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HabitBuilder.DAL\HabitBuilder.DAL.csproj">
+      <Project>{62ebafd9-590b-49b2-9ca7-2a10425277a0}</Project>
+      <Name>HabitBuilder.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

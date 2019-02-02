@@ -65,6 +65,11 @@ namespace HabitBuilderApp.Models
     public class RegisterViewModel
     {
         [Required]
+        [MaxLength(50)]
+        [Display(Name = "Имя")]
+        public string UserProfileName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
