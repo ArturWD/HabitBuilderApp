@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace HabitBuilderApp.Controllers
 {
@@ -12,6 +13,12 @@ namespace HabitBuilderApp.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon(); // it will clear the session at the end of request
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: TodayView/Details/5

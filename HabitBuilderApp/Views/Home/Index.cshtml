@@ -3,13 +3,13 @@
 }
 
 <div class="landing">
-    <header class="landing__section landing__header" style="background-image: url(~/Content/Images/mountain.jpg)">
+    <header class="landing__section landing__header" style="background-image: url(@Url.Content("~/Content/Images/mountain.jpg"))">
         <div class="main-container main-container--no-padding">
 
             <div class="landing__center-block">
                 <img class="landing__main-logo" src="~/Content/Images/LogoLanding.svg" alt="Habit Builder">
                 <h2 class="landing__lead">Всё, что нужно для достижения целей</h2>
-                @Html.ActionLink("Начать пользоваться", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class= "landing__button" })
+                @Html.ActionLink("Начать пользоваться", "LogIn", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class= "landing__button" })
             </div>
 
         </div>

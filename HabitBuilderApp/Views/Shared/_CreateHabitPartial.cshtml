@@ -1,0 +1,94 @@
+﻿
+
+<div id="createHabit" class="white-popup mfp-hide">
+    <div class="create-window create-window--habit">
+        <div class="create-window__create-header create-header">
+            <div class="create-header__top">
+                <button id="closepopup" class="create-header__back-link">
+                    <svg class="create-header__back-arrow" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                            <path class="path-white" d="M10.273 5.00903C10.717 4.56503 11.416 4.56503 11.86 5.00903C12.289 5.43803 12.289 6.15203 11.86 6.58003L3.81302 14.627H30.367C30.986 14.627 31.494 15.119 31.494 15.738C31.494 16.357 30.986 16.865 30.367 16.865H3.81302L11.86 24.897C12.289 25.341 12.289 26.056 11.86 26.484C11.416 26.928 10.717 26.928 10.273 26.484L0.321018 16.532C-0.107982 16.103 -0.107982 15.389 0.321018 14.961L10.273 5.00903Z" fill="#52C894" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0">
+                                <rect width="31.494" height="31.494" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+                <h3 class="create-header__title">Создание новой привычки</h3>
+            </div>
+            <img class="create-header__img" src="~/Content/Images/create-habit.svg" alt="цепь">
+        </div>
+        <form class="create-window__create-form create-form">
+
+            <div class="input">
+                <input class="input__field" type="text" required>
+                <span class="input__highlight"></span>
+                <span class="input__bar"></span>
+                <label class="input__label">Название</label>
+            </div>
+
+            <div class="input">
+                <textarea class="input__field" rows="4" required pattern="^$|*"></textarea>
+                <span class="input__highlight"></span>
+                <span class="input__bar"></span>
+                <label class="input__label">Описание</label>
+            </div>
+
+            <h3 class="create-form__group-title">Причины</h3>
+            <div class="create-form__reasons">
+                <div class="input">
+                    <input class="input__field" type="text" required pattern=".*">
+                    <span class="input__highlight"></span>
+                    <span class="input__bar"></span>
+                    <label class="input__label">Причина</label>
+                </div>
+
+
+            </div>
+            <button type="button" id="addReason" class="create-btn create-btn--small">
+                <svg class="create-btn__icon--small" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="create-btn__path create-btn__path--white" fill-rule="evenodd" clip-rule="evenodd" d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#4D4A51" />
+                </svg>
+            </button>
+
+
+            <h3 class="create-form__group-title">Расписание</h3>
+            <div class="create-form__schedule">
+                <div class="input input--day">
+                    <input id="day-1" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-1" class="input__day day day--input">Пн</label>
+                </div>
+                <div class="input input--day">
+                    <input id="day-2" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-2" class="input__day day day--input">Вт</label>
+                </div>
+                <div class="input input--day">
+                    <input id="day-3" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-3" class="input__day day day--input">Ср</label>
+                </div>
+                <div class="input input--day">
+                    <input id="day-4" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-4" class="input__day day day--input">Чт</label>
+                </div>
+                <div class="input input--day">
+                    <input id="day-5" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-5" class="input__day day day--input">Пт</label>
+                </div>
+                <div class="input input--day">
+                    <input id="day-6" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-6" class="input__day day day--input">Сб</label>
+                </div>
+                <div class="input input--day">
+                    <input id="day-7" class="input__checkbox" type="checkbox" checked>
+                    <label for="day-7" class="input__day day day--input">Вс</label>
+                </div>
+            </div>
+
+
+            <button type="submit" class="create-form__submit-button">Создать</button>
+
+        </form>
+    </div>
+</div>
