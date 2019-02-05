@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HabitBuilderApp.Models;
+using HabitBuilder.Core.Models;
+using HabitBuilder.DAL;
 
 namespace HabitBuilderApp.Controllers
 {
@@ -79,7 +81,8 @@ namespace HabitBuilderApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "TodayView");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -151,7 +154,11 @@ namespace HabitBuilderApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfileName = model.UserProfileName };
+                DataContext db = new DataContext();
+                var myUser = new UserProfile();
+                db.UserProfiles.Add(myUser);
+                db.SaveChanges();
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfileName = model.UserProfileName, UserProfileId = myUser.UserProfileId};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,7 +170,7 @@ namespace HabitBuilderApp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "TodayView");
                 }
                 AddErrors(result);
             }

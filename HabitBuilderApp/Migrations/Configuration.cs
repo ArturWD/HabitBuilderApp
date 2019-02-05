@@ -10,7 +10,6 @@ namespace HabitBuilderApp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "HabitBuilderApp.Models.ApplicationDbContext";
         }
 
         protected override void Seed(HabitBuilderApp.Models.ApplicationDbContext context)

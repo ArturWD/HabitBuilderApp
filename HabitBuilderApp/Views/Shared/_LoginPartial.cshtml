@@ -1,4 +1,45 @@
 ﻿@using Microsoft.AspNet.Identity
+@using HabitBuilderApp.Models.Extensions
+
+
+<div class="header__profile">
+    <div class="profile-button">@User.Identity.GetName().Substring(0, 1).ToUpper()</div>
+    <div class="profile-menu">
+        <div class="profile-menu__header profile-header">
+            <div class="profile-header__avatar">@User.Identity.GetName().Substring(0,1).ToUpper()</div>
+            <div class="profile-header__user user">
+                <div class="user__name">@User.Identity.GetName()</div>
+                <div class="user__email">@User.Identity.GetUserName()</div>
+                <!-- <div class="user__subscription">премиум подписка</div> -->
+            </div>
+            <img src="~/Content/Images/close.svg" alt="" class="profile-header__close">
+        </div>
+        <div class="profile-menu__options">
+            <a href="@Url.Action("Index","Manage")" class="menu-option profile-option">
+                <img src="~/Content/Images/settings.svg" alt="" class="menu-option__icon">
+                <div class="menu-option__name">Настройки</div>
+            </a>
+            @Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "menu-option profile-option" })
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="menu-option profile-option">
+                    <img src="~/Content/Images/logout.svg" alt="" class="menu-option__icon">
+                    <div class="menu-option__name">Выйти</div>
+                </a>
+
+            }
+            <a href="#" class="menu-option profile-option">
+                <img src="~/Content/Images/logout.svg" alt="" class="menu-option__icon">
+                <div class="menu-option__name">Выйти</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -20,3 +61,4 @@ else
         <li>@Html.ActionLink("Выполнить вход", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+    -->

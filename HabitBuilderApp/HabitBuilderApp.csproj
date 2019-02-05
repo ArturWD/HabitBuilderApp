@@ -197,27 +197,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TodayViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902021500519_InitialCreate.cs" />
-    <Compile Include="Migrations\201902021500519_InitialCreate.Designer.cs">
-      <DependentUpon>201902021500519_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902021520007_initial.cs" />
-    <Compile Include="Migrations\201902021520007_initial.Designer.cs">
-      <DependentUpon>201902021520007_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902021525204_userProfile.cs" />
-    <Compile Include="Migrations\201902021525204_userProfile.Designer.cs">
-      <DependentUpon>201902021525204_userProfile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902021539279_userProfile1.cs" />
-    <Compile Include="Migrations\201902021539279_userProfile1.Designer.cs">
-      <DependentUpon>201902021539279_userProfile1.cs</DependentUpon>
+    <Compile Include="Migrations\201902030638366_initial.cs" />
+    <Compile Include="Migrations\201902030638366_initial.Designer.cs">
+      <DependentUpon>201902030638366_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Extensions\IdentityExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,6 +218,27 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\add.svg" />
+    <Content Include="Content\Images\Bage.svg" />
+    <Content Include="Content\Images\close-white.svg" />
+    <Content Include="Content\Images\close.svg" />
+    <Content Include="Content\Images\create-habit.svg" />
+    <Content Include="Content\Images\garbage .svg" />
+    <Content Include="Content\Images\hamburger.svg" />
+    <Content Include="Content\Images\left-arrow.svg" />
+    <Content Include="Content\Images\LogoFull.svg" />
+    <Content Include="Content\Images\LogoLanding.svg" />
+    <Content Include="Content\Images\LogoMin.svg" />
+    <Content Include="Content\Images\logout.svg" />
+    <Content Include="Content\Images\more.svg" />
+    <Content Include="Content\Images\mountain.jpg" />
+    <Content Include="Content\Images\ok.svg" />
+    <Content Include="Content\Images\Pen.svg" />
+    <Content Include="Content\Images\settings.svg" />
+    <Content Include="Content\Images\skip.svg" />
+    <Content Include="Content\Images\Vector.svg" />
+    <Content Include="Content\Images\watch.svg" />
+    <Content Include="Content\main.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -248,6 +259,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\scripts.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -259,8 +271,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -282,6 +292,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\TodayView\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,20 +311,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902021500519_InitialCreate.resx">
-      <DependentUpon>201902021500519_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902021520007_initial.resx">
-      <DependentUpon>201902021520007_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902021525204_userProfile.resx">
-      <DependentUpon>201902021525204_userProfile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902021539279_userProfile1.resx">
-      <DependentUpon>201902021539279_userProfile1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\HabitBuilder.Core\HabitBuilder.Core.csproj">
       <Project>{2c796c4b-936d-4df4-8643-0dc28bc52de1}</Project>
       <Name>HabitBuilder.Core</Name>
@@ -322,6 +319,11 @@
       <Project>{62ebafd9-590b-49b2-9ca7-2a10425277a0}</Project>
       <Name>HabitBuilder.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902030638366_initial.resx">
+      <DependentUpon>201902030638366_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

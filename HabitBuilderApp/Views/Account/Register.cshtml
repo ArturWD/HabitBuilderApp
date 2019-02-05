@@ -5,44 +5,51 @@
                 ViewBag.Title = "Регистрация";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="register">
+    <div class="register__center-block">
+        <div class="register__form">
+            <h3 class="register__header">
+                Создайте новый аккаунт
+            </h3>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "register__inputs", role = "form" }))
+            {
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Создайте новую учетную запись.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserProfileName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserProfileName, new { @class = "form-control" })
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "register__error" })
+                <div class="input">
+                    @Html.TextBoxFor(m => m.UserProfileName, new { @class = "input__field" })
+                    <span class="input__highlight"></span>
+                    <span class="input__bar"></span>
+                    <label class="input__label">Имя</label>
+                </div>
+                <div class="input">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "input__field" })
+                    <span class="input__highlight"></span>
+                    <span class="input__bar"></span>
+                    <label class="input__label">Email</label>
+                </div>
+                <div class="input">
+                    @Html.PasswordFor(m => m.Password, new { @class = "input__field" })
+                    <span class="input__highlight"></span>
+                    <span class="input__bar"></span>
+                    <label class="input__label">Пароль</label>
+                </div>
+                <div class="input">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input__field" })
+                    <span class="input__highlight"></span>
+                    <span class="input__bar"></span>
+                    <label class="input__label">Подтвердить пароль</label>
+                </div>
+
+                <button type="submit" class="create-form__submit-button">Создать</button>
+            }
+
         </div>
+        @Html.ActionLink("Уже есть аккаунт? Войти", "Login", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "register__additional" })
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Регистрация" />
-        </div>
-    </div>
-}
+</div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
