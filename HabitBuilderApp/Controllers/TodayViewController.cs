@@ -21,33 +21,14 @@ namespace HabitBuilderApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // GET: TodayView/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Create(string HabitName, string HabitDescription, string[] Reasons, int[] Schedule)
         {
+            var i = 1;
             return View();
         }
 
-        // GET: TodayView/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: TodayView/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+  
 
         // GET: TodayView/Edit/5
         public ActionResult Edit(int id)

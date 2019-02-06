@@ -1,5 +1,7 @@
 ﻿
 
+
+
 <div id="createHabit" class="white-popup mfp-hide">
     <div class="create-window create-window--habit">
         <div class="create-window__create-header create-header">
@@ -20,17 +22,21 @@
             </div>
             <img class="create-header__img" src="~/Content/Images/create-habit.svg" alt="цепь">
         </div>
-        <form class="create-window__create-form create-form">
+
+
+        @using (Html.BeginForm("Create", "TodayView", FormMethod.Post, new { @class = "create-window__create-form create-form", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
 
             <div class="input">
-                <input class="input__field" type="text" required>
+                <input class="input__field" type="text" required name="HabitName">
                 <span class="input__highlight"></span>
                 <span class="input__bar"></span>
                 <label class="input__label">Название</label>
             </div>
 
             <div class="input">
-                <textarea class="input__field" rows="4" required pattern="^$|*"></textarea>
+                <textarea class="input__field" rows="4" required pattern="^$|*" name="HabitDescription"></textarea>
                 <span class="input__highlight"></span>
                 <span class="input__bar"></span>
                 <label class="input__label">Описание</label>
@@ -39,7 +45,7 @@
             <h3 class="create-form__group-title">Причины</h3>
             <div class="create-form__reasons">
                 <div class="input">
-                    <input class="input__field" type="text" required pattern=".*">
+                    <input class="input__field" type="text" required pattern=".*" name="Reasons[]">
                     <span class="input__highlight"></span>
                     <span class="input__bar"></span>
                     <label class="input__label">Причина</label>
@@ -57,31 +63,31 @@
             <h3 class="create-form__group-title">Расписание</h3>
             <div class="create-form__schedule">
                 <div class="input input--day">
-                    <input id="day-1" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-1" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="1">
                     <label for="day-1" class="input__day day day--input">Пн</label>
                 </div>
                 <div class="input input--day">
-                    <input id="day-2" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-2" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="2">
                     <label for="day-2" class="input__day day day--input">Вт</label>
                 </div>
                 <div class="input input--day">
-                    <input id="day-3" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-3" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="3">
                     <label for="day-3" class="input__day day day--input">Ср</label>
                 </div>
                 <div class="input input--day">
-                    <input id="day-4" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-4" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="4">
                     <label for="day-4" class="input__day day day--input">Чт</label>
                 </div>
                 <div class="input input--day">
-                    <input id="day-5" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-5" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="5">
                     <label for="day-5" class="input__day day day--input">Пт</label>
                 </div>
                 <div class="input input--day">
-                    <input id="day-6" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-6" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="6">
                     <label for="day-6" class="input__day day day--input">Сб</label>
                 </div>
                 <div class="input input--day">
-                    <input id="day-7" class="input__checkbox" type="checkbox" checked>
+                    <input id="day-7" class="input__checkbox" type="checkbox" checked name="Schedule[]" value="7">
                     <label for="day-7" class="input__day day day--input">Вс</label>
                 </div>
             </div>
@@ -89,6 +95,7 @@
 
             <button type="submit" class="create-form__submit-button">Создать</button>
 
-        </form>
+        }
+
     </div>
 </div>
