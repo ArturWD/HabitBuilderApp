@@ -25,6 +25,7 @@ namespace HabitBuilderApp.Models
             // Здесь добавьте утверждения пользователя
 
             userIdentity.AddClaim(new Claim("UserProfileName", this.UserProfileName.ToString()));
+            userIdentity.AddClaim(new Claim("UserProfileId", this.UserProfileId.ToString()));
 
             return userIdentity;
         }
