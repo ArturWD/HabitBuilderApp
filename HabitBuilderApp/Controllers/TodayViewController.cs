@@ -27,26 +27,34 @@ namespace HabitBuilderApp.Controllers
             Session.Abandon(); // it will clear the session at the end of request
             return RedirectToAction("Index", "Home");
         }
-
+        [HttpPost]
         public ActionResult Create(string HabitName, string HabitDescription, string[] Reasons, int[] Schedule)
         {
-            int i = Int32.Parse(User.Identity.GetUserId());
+            int id = Int32.Parse(User.Identity.GetUserId());
             Habit habit = new Habit();
             habit.HabitName = HabitName;
             habit.Description = HabitDescription;
             habit.Reasons = Reasons.GetReasons();
             habit.Category = new Category{CategoryName = "Без категории" };
-
+            
             List<Day> days = new List<Day>();
-            foreach (var day in Schedule)
+            List<Day> dbDays = db.Days.ToList();
+            foreach (int day in Schedule)
             {
-                Day dayObj = db
-                days.Add(reasonObj);
+                Day dayObj = dbDays.Where(d => d.DayNumber == day).Single();
+                days.Add(dayObj);
             }
 
-            habit.Days = Schedule.GetDays();
-            var i = 1;
-            return View();
+            habit.Days = days;
+
+
+            UserProfile user = db.UserProfiles.First(u => u.UserProfileId == id);
+            user.Habits.Add(habit);
+
+
+            db.SaveChanges();
+            
+            return RedirectToAction("Index", "TodayView");
         }
 
 
