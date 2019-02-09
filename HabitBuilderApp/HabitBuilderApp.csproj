@@ -295,6 +295,8 @@
     <Content Include="Views\TodayView\Index.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
     <Content Include="Views\Shared\_CreateHabitPartial.cshtml" />
+    <Content Include="Views\Shared\_WeekPartialView.cshtml" />
+    <Content Include="Views\Shared\_HabitCardsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +322,10 @@
     <ProjectReference Include="..\HabitBuilder.DAL\HabitBuilder.DAL.csproj">
       <Project>{62ebafd9-590b-49b2-9ca7-2a10425277a0}</Project>
       <Name>HabitBuilder.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HabitBuilder.Services\HabitBuilder.Services.csproj">
+      <Project>{66634edc-3f63-4525-aa7b-945509cc38ac}</Project>
+      <Name>HabitBuilder.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
