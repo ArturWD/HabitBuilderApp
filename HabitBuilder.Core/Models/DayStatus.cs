@@ -17,6 +17,7 @@ namespace HabitBuilder.Core.Models
         [MaxLength(100)]
         public string NoteHeadline { get; set; }
         public string Note { get; set; }
+        public DateTime StatusDate { get; set; }
 
     }
 }

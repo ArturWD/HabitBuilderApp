@@ -25,16 +25,49 @@ namespace HabitBuilder.Services
                 habitView.ChainLength = CountChainLength(habit);
                 habitView.Progress =  CountChainLength(habit)/21;
                 habitView.Week = GetLastWeek(habit);
+
+                habits.Add(habitView);
             }
+
+            return habits;
         }
 
         private int CountChainLength(Habit habit)
         {
             return 15;
         }
+        
         private List<DayViewModel> GetLastWeek(Habit habit)
         {
+            var days = new List<DayViewModel>();
+            var lastweek = habit.DayStatuses.Where(d => d.StatusDate >= DateTime.Now.AddDays(-7)).OrderByDescending(d => d.StatusDate);
+
+            foreach (var date in lastweek)
+            {
+                DayViewModel day = new DayViewModel();
+                day.DayStatus = date.Status.StatusName;
+                day.DayId = date.DayStatusId;
+                day.Date = date.StatusDate;
+                day.HasNote = date.NoteHeadline == "" && date.Note == "";
+
+                days.Add(day);
+            }
+
+            if (days.Count < 7)
+            {
+                for (int i = 0; i < 7-days.Count; i++)
+                {
+                    DayViewModel day = new DayViewModel();
+                    day.DayStatus = "disabled";
+
+                    days.Add(day);
+                }
+            }
+
+            return days;
+
 
         }
+        
     }
 }

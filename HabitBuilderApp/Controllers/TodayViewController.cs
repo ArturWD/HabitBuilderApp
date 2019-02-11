@@ -19,6 +19,7 @@ namespace HabitBuilderApp.Controllers
         // GET: TodayView
         public ActionResult Index()
         {
+
             return View();
         }
         public ActionResult LogOff()

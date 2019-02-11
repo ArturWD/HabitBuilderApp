@@ -16,7 +16,7 @@ namespace HabitBuilder.DAL
 
         }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Date> Dates { get; set; }
+        //public virtual DbSet<Date> Dates { get; set; }
         public virtual DbSet<Day> Days { get; set; }
         public virtual DbSet<DayStatus> DayStatuses { get; set; }
         public virtual DbSet<Habit> Habits { get; set; }
