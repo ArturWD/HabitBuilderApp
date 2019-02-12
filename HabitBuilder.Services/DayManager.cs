@@ -55,7 +55,8 @@ namespace HabitBuilder.Services
 
             if (days.Count < 7)
             {
-                for (int i = 0; i < 7-days.Count; i++)
+                int disabled = 7 - days.Count;
+                for (int i = 0; i <disabled ; i++)
                 {
                     DayViewModel day = new DayViewModel();
                     day.DayStatus = "disabled";

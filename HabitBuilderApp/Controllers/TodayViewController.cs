@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using HabitBuilder.Services;
 
 namespace HabitBuilderApp.Controllers
 {
@@ -19,8 +20,11 @@ namespace HabitBuilderApp.Controllers
         // GET: TodayView
         public ActionResult Index()
         {
-
-            return View();
+            var dm = new DayManager();
+            int userId = Convert.ToInt32(User.Identity.GetUserId());
+            UserProfile user = db.UserProfiles.First(u => u.UserProfileId == userId);
+            var habits = dm.GetHabits(user);
+            return View(habits);
         }
         public ActionResult LogOff()
         {
@@ -42,7 +46,7 @@ namespace HabitBuilderApp.Controllers
             List<Day> dbDays = db.Days.ToList();
             foreach (int day in Schedule)
             {
-                Day dayObj = dbDays.Where(d => d.DayNumber == day).Single();
+                Day dayObj = dbDays.First(d => d.DayNumber == day);
                 days.Add(dayObj);
             }
 

@@ -1,4 +1,5 @@
-﻿@model 
+﻿@model ICollection<HabitBuilder.Core.ViewModels.HabitCardViewModel>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -28,6 +29,7 @@
                 </svg>
             </a>
 
+            @Html.Partial("_HabitCardsPartial", Model)
 
 
             <div class="habit-preview-container">
