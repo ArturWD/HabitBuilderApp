@@ -10,8 +10,11 @@
                 <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
             </button>
             <div class="card__more-menu more-menu">
+                <a href="@Url.Action("Delete", new { id = habit.HabitId})" class="more-menu__item" style="display: block;">Удалить</a>
+                <!--
                 <h4 class="more-menu__item">Удалить</h4>
                 <h4 class="more-menu__item">Завершить</h4>
+                -->
             </div>
         </div>
         @Html.Partial("_WeekPartialView", habit.Week)

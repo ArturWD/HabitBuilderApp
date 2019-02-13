@@ -23,6 +23,7 @@ namespace HabitBuilderApp.Controllers
             var dm = new DayManager();
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             UserProfile user = db.UserProfiles.First(u => u.UserProfileId == userId);
+            dm.SetStatusesAll(user);
             var habits = dm.GetHabits(user);
             return View(habits);
         }
@@ -54,59 +55,33 @@ namespace HabitBuilderApp.Controllers
 
 
             UserProfile user = db.UserProfiles.First(u => u.UserProfileId == id);
+            
+            DayStatus status = new DayStatus();
+            status.StatusDate = DateTime.Now;
+            status.Status = db.Statuses.First(s => s.StatusName == "unmarked");
+          
+            habit.DayStatuses.Add(status);
+
             user.Habits.Add(habit);
-
-
             db.SaveChanges();
             
             return RedirectToAction("Index", "TodayView");
         }
 
 
-  
 
-        // GET: TodayView/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: TodayView/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: TodayView/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            int userId = Convert.ToInt32(User.Identity.GetUserId());
+            UserProfile user = db.UserProfiles.First(u => u.UserProfileId == userId);
 
-        // POST: TodayView/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+            var habitToRemove = db.Habits.First(h => h.HabitId == id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            user.Habits.Remove(habitToRemove);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "TodayView");
         }
     }
 }

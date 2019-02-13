@@ -32,15 +32,56 @@ namespace HabitBuilder.Services
             return habits;
         }
 
+        public void SetStatusesAll(UserProfile user)
+        {
+            var habits = user.Habits;
+
+            foreach (var habit in habits)
+            {
+                SetStatusesIndividual(habit);
+            }
+
+            db.SaveChanges();
+        }
+
+        private void SetStatusesIndividual(Habit habit)
+        {
+            List<DayStatus> statuses = habit.DayStatuses.OrderBy(s => s.StatusDate).ToList();
+            if(statuses.Last().StatusDate.Date != DateTime.Now.Date)
+            {
+                DateTime lastRecord = statuses.Last().StatusDate;
+
+                while(lastRecord.Date != DateTime.Now.Date)
+                {
+                    lastRecord.AddDays(1);
+                    DayStatus ds = new DayStatus();
+                    ds.Status = db.Statuses.First(s => s.StatusName == "fail");
+                    ds.StatusDate = lastRecord;
+
+                    habit.DayStatuses.Add(ds);
+              
+                }
+            }
+
+        }
+
         private int CountChainLength(Habit habit)
         {
-            return 15;
+            List<DayStatus> statuses = habit.DayStatuses.OrderBy(d => d.StatusDate).Reverse().ToList();
+            int chainLength = 0;
+            int index = 0;
+            while ( (statuses[index].Status.StatusName == "success" || statuses[index].Status.StatusName == "skip" || statuses[index].Status.StatusName == "unmarked") && index < statuses.Count-1)
+            {
+                if (statuses[index].Status.StatusName == "success") chainLength++;
+                index++;
+            }
+            return chainLength;
         }
         
         private List<DayViewModel> GetLastWeek(Habit habit)
         {
             var days = new List<DayViewModel>();
-            var lastweek = habit.DayStatuses.Where(d => d.StatusDate >= DateTime.Now.AddDays(-7)).OrderByDescending(d => d.StatusDate);
+            var lastweek = habit.DayStatuses.Where(d => d.StatusDate.Date >= DateTime.Now.Date.AddDays(-7)).OrderByDescending(d => d.StatusDate);
 
             foreach (var date in lastweek)
             {
@@ -64,6 +105,8 @@ namespace HabitBuilder.Services
                     days.Add(day);
                 }
             }
+
+            days.Reverse();
 
             return days;
 

@@ -23,5 +23,10 @@ namespace HabitBuilder.Core.Models
         public virtual ICollection<Day> Days { get; set; }
         public virtual ICollection<DayStatus> DayStatuses { get; set; }
 
+        public Habit()
+        {
+            DayStatuses = new List<DayStatus>();
+        }
+
     }
 }
