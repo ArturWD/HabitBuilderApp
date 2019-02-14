@@ -24,6 +24,7 @@ namespace HabitBuilderApp.Controllers
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             UserProfile user = db.UserProfiles.First(u => u.UserProfileId == userId);
             dm.SetStatusesAll(user);
+
             var habits = dm.GetHabits(user);
             return View(habits);
         }

@@ -41,26 +41,27 @@ namespace HabitBuilder.Services
                 SetStatusesIndividual(habit);
             }
 
-            db.SaveChanges();
+            
         }
 
         private void SetStatusesIndividual(Habit habit)
         {
             List<DayStatus> statuses = habit.DayStatuses.OrderBy(s => s.StatusDate).ToList();
-            if(statuses.Last().StatusDate.Date != DateTime.Now.Date)
+            if(statuses.Count != 0 && statuses.Last().StatusDate.Date != DateTime.Now.Date)
             {
                 DateTime lastRecord = statuses.Last().StatusDate;
 
                 while(lastRecord.Date != DateTime.Now.Date)
                 {
-                    lastRecord.AddDays(1);
+                    lastRecord = lastRecord.AddDays(1);
                     DayStatus ds = new DayStatus();
                     ds.Status = db.Statuses.First(s => s.StatusName == "fail");
                     ds.StatusDate = lastRecord;
 
-                    habit.DayStatuses.Add(ds);
+                    db.Habits.First(h => h.HabitId == habit.HabitId).DayStatuses.Add(ds);
               
                 }
+                db.SaveChanges();
             }
 
         }
@@ -81,7 +82,7 @@ namespace HabitBuilder.Services
         private List<DayViewModel> GetLastWeek(Habit habit)
         {
             var days = new List<DayViewModel>();
-            var lastweek = habit.DayStatuses.Where(d => d.StatusDate.Date >= DateTime.Now.Date.AddDays(-7)).OrderByDescending(d => d.StatusDate);
+            var lastweek = habit.DayStatuses.Where(d => d.StatusDate.Date > DateTime.Now.Date.AddDays(-7)).OrderByDescending(d => d.StatusDate);
 
             foreach (var date in lastweek)
             {
