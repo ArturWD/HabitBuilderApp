@@ -47,17 +47,47 @@ namespace HabitBuilder.Services
         private void SetStatusesIndividual(Habit habit)
         {
             List<DayStatus> statuses = habit.DayStatuses.OrderBy(s => s.StatusDate).ToList();
+
             if(statuses.Count != 0 && statuses.Last().StatusDate.Date != DateTime.Now.Date)
             {
-                DateTime lastRecord = statuses.Last().StatusDate;
+                int[] schedule = habit.Days.Select(d => d.DayNumber).ToArray();
 
-                while(lastRecord.Date != DateTime.Now.Date)
+                DateTime lastRecord = statuses.Last().StatusDate;
+                if (statuses.Last().Status.StatusName == "unmarked")
                 {
+                    if (schedule.Contains((int)lastRecord.DayOfWeek))
+                    {
+                        db.Habits.First(h => h.HabitId == habit.HabitId).DayStatuses.OrderBy(s => s.StatusDate).Last().Status = db.Statuses.First(s => s.StatusName == "fail");
+                    }
+                    else
+                    {
+                        db.Habits.First(h => h.HabitId == habit.HabitId).DayStatuses.OrderBy(s => s.StatusDate).Last().Status = db.Statuses.First(s => s.StatusName == "skip");
+                    }
+
+                    db.SaveChanges();
+                }
+
+
+
+                while (lastRecord.Date != DateTime.Now.Date)
+                {
+                    
                     lastRecord = lastRecord.AddDays(1);
                     DayStatus ds = new DayStatus();
-                    ds.Status = db.Statuses.First(s => s.StatusName == "fail");
-                    ds.StatusDate = lastRecord;
+                    if (schedule.Contains((int)lastRecord.DayOfWeek))
+                    {
+                        ds.Status = db.Statuses.First(s => s.StatusName == "fail");
+                    }
+                    else
+                    {
+                        ds.Status = db.Statuses.First(s => s.StatusName == "skip");
+                    }
 
+                    if(lastRecord.Date == DateTime.Now.Date)
+                        ds.Status = db.Statuses.First(s => s.StatusName == "unmarked");
+
+
+                    ds.StatusDate = lastRecord;
                     db.Habits.First(h => h.HabitId == habit.HabitId).DayStatuses.Add(ds);
               
                 }
