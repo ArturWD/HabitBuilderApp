@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HabitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TodayViewController.cs" />
@@ -297,6 +298,8 @@
     <Content Include="Views\Shared\_CreateHabitPartial.cshtml" />
     <Content Include="Views\Shared\_WeekPartialView.cshtml" />
     <Content Include="Views\Shared\_HabitCardsPartial.cshtml" />
+    <Content Include="Views\Habit\Index.cshtml" />
+    <Content Include="Views\Shared\_CalendarPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

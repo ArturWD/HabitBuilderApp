@@ -1,0 +1,46 @@
+﻿@model  HabitBuilder.Core.ViewModels.HabitViewModel
+
+<header class="header">
+    <div class="header__habit-title">
+        <a href="@Url.Action("Index", "TodayView")" class="header__back-link">
+            <img src="~/Content/Images/left-arrow.svg" alt="" class="header__back-arrow">
+        </a>
+        <h3 class="header__habit-name">@Model.HabitName</h3>
+    </div>
+
+    <img src="~/Content/Images/LogoFull.svg" alt="" class="header__logo-imgfull header__logo-imgfull--habit">
+
+    @Html.Partial("_LoginPartial")
+</header>
+
+
+
+
+<div class="main-container">
+    <div class="habit-tabs-container">
+        <a href="#note" class="habit-tab">Заметки</a>
+        <a href="#calendar" class="habit-tab habit-tab--active">Календарь</a>
+        <a href="#goal" class="habit-tab">Цели</a>
+    </div>
+
+    <div class="habit-carousel owl-carousel">
+        <div class="note-view carousel-item" data-hash="note">
+
+        </div>
+
+
+
+        <div class="calendar-view carousel-item" data-hash="calendar">
+            @Html.Partial("_CalendarPartialView", Model)
+        </div>
+
+
+
+        <div class="goal-view carousel-item" data-hash="goal">
+
+        </div>
+
+    </div>
+
+
+</div>
