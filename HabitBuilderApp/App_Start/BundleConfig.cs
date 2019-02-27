@@ -23,7 +23,8 @@ namespace HabitBuilderApp
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/customjs").Include(
-                      "~/Scripts/scripts.min.js"));
+                      "~/Scripts/scripts.min.js",
+                      "~/Scripts/ajaxMethods.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

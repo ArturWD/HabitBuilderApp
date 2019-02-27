@@ -145,6 +145,17 @@ namespace HabitBuilder.Services
 
 
         }
+
+        public void ChangeStatus(string statusName, int dayId)
+        {
+            try
+            {
+                DayStatus day = db.DayStatuses.First(d => d.DayStatusId == dayId);
+                day.Status = db.Statuses.First(s => s.StatusName == statusName);
+                db.SaveChanges();
+            }
+            catch { }         
+        }
         
     }
 }
