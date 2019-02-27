@@ -5,16 +5,28 @@
 
     @foreach (var day in Model)
     {
-        if (day.DayStatus == "disabled")
+        if (day.DayStatus == "disabled" && day.WithDay)
         {
             <div class="day day--disabled day--with-name">
+                <h5 class="day__name">@day.Date.ToString("ddd")</h5>
             </div>
         }
-        else
+        else if (day.DayStatus == "disabled")
+        {
+            <div class="day day--disabled">
+            </div>
+        }
+        else if (day.WithDay)
         {
             <div class="day day--@day.DayStatus day--with-name" data-identity="@day.DayId">
                 <h5 class="day__date">@day.Date.Day</h5>
                 <h5 class="day__name">@day.Date.ToString("ddd")</h5>
+            </div>
+        }
+        else
+        {
+            <div class="day day--@day.DayStatus" data-identity="@day.DayId">
+                <h5 class="day__date">@day.Date.Day</h5>
             </div>
         }
 

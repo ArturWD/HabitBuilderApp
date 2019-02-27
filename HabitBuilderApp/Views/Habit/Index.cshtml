@@ -1,5 +1,7 @@
 ﻿@model  HabitBuilder.Core.ViewModels.HabitViewModel
-
+@{
+    ViewBag.Title = Model.HabitName;
+}
 <header class="header">
     <div class="header__habit-title">
         <a href="@Url.Action("Index", "TodayView")" class="header__back-link">

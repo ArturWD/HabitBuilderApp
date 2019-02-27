@@ -11,7 +11,11 @@ namespace HabitBuilder.Services
 {
     public class DayManager
     {
-        DataContext db = new DataContext();
+        DataContext db { get; set; }
+        public DayManager(DataContext db)
+        {
+            this.db = db;
+        }
 
         public List<HabitCardViewModel> GetHabits(UserProfile user)
         {
@@ -63,8 +67,6 @@ namespace HabitBuilder.Services
                     {
                         db.Habits.First(h => h.HabitId == habit.HabitId).DayStatuses.OrderBy(s => s.StatusDate).Last().Status = db.Statuses.First(s => s.StatusName == "skip");
                     }
-
-                    db.SaveChanges();
                 }
 
 
@@ -121,7 +123,7 @@ namespace HabitBuilder.Services
                 day.DayId = date.DayStatusId;
                 day.Date = date.StatusDate;
                 day.HasNote = date.NoteHeadline == "" && date.Note == "";
-
+                day.WithDay = true;
                 days.Add(day);
             }
 

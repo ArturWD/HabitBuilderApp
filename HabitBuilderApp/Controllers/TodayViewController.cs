@@ -20,15 +20,15 @@ namespace HabitBuilderApp.Controllers
         // GET: TodayView
         public ActionResult Index()
         {
-            var dm = new DayManager();
+            var dm = new DayManager(db);
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             UserProfile user = db.UserProfiles.First(u => u.UserProfileId == userId);
             dm.SetStatusesAll(user);
             db.SaveChanges();
 
-            user = db.UserProfiles.First(u => u.UserProfileId == userId);
-            dm = new DayManager();
-            var habits = dm.GetHabits(user);
+            UserProfile user2 = db.UserProfiles.First(u => u.UserProfileId == userId);
+            var dm2 = new DayManager(db);
+            var habits = dm2.GetHabits(user2);
             return View(habits);
         }
         public ActionResult LogOff()
@@ -65,7 +65,6 @@ namespace HabitBuilderApp.Controllers
             status.Status = db.Statuses.First(s => s.StatusName == "unmarked");
           
             habit.DayStatuses.Add(status);
-
             user.Habits.Add(habit);
             db.SaveChanges();
             

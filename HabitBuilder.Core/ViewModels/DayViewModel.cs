@@ -11,6 +11,11 @@ namespace HabitBuilder.Core.ViewModels
         public int DayId { get; set; }
         public string DayStatus { get; set; }
         public bool HasNote { get; set; }
+        public bool WithDay { get; set; }
         public DateTime Date { get; set; }
+        public DayViewModel()
+        {
+            WithDay = false;
+        }
     }
 }
