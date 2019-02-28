@@ -98,16 +98,21 @@ namespace HabitBuilder.Services
 
         }
 
-        private int CountChainLength(Habit habit)
+        public int CountChainLength(Habit habit)
         {
             List<DayStatus> statuses = habit.DayStatuses.OrderBy(d => d.StatusDate).Reverse().ToList();
             int chainLength = 0;
             int index = 0;
-            while ( (statuses[index].Status.StatusName == "success" || statuses[index].Status.StatusName == "skip" || statuses[index].Status.StatusName == "unmarked") && index < statuses.Count-1)
+            try
             {
-                if (statuses[index].Status.StatusName == "success") chainLength++;
-                index++;
+                while ((statuses[index].Status.StatusName == "success" || statuses[index].Status.StatusName == "skip" || statuses[index].Status.StatusName == "unmarked") && index < statuses.Count - 1)
+                {
+                    if (statuses[index].Status.StatusName == "success") chainLength++;
+                    index++;
+                }
             }
+            catch { chainLength = -1; }
+            
             return chainLength;
         }
         

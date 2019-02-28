@@ -22,10 +22,20 @@ namespace HabitBuilderApp.Controllers
             return View(habitModel);
         }
 
-        public void ChangeStatus(string statusName, int dayId)
+        public ActionResult ChangeStatus(string statusName, int dayId)
         {
             DayManager dm = new DayManager(db);
             dm.ChangeStatus(statusName, dayId);
+            Habit habit = db.Habits.First(h => h.DayStatuses.Select(s => s.DayStatusId).Contains(dayId));
+            int chainLength = dm.CountChainLength(habit);
+            return Json(chainLength.ToString(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult RefreshChainLength(int id)
+        {
+            DayManager dm = new DayManager(db);
+            Habit habit = db.Habits.First(h => h.DayStatuses.Select(s => s.DayStatusId).Contains(id));
+            int chainLength = dm.CountChainLength(habit);
+            return Json(chainLength.ToString(), JsonRequestBehavior.AllowGet);
         }
     }
 }
