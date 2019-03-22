@@ -1,66 +1,74 @@
 ﻿@model ICollection<HabitBuilder.Core.ViewModels.HabitCardViewModel>
 
-@foreach (var habit in Model)
+@if (Model.Count == 0)
 {
-<div class="habit-preview-container">
-    <div class="habit-preview-container__habit card">
-        <div class="card__header">
-            <a href="@Url.Action("Index", "Habit", new { habitId = habit.HabitId })" class="card__name">@habit.HabitName</a>
-            <button class="card__more-button more-menu-button">
-                <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
-            </button>
-            <div class="card__more-menu more-menu">
-                <a href="@Url.Action("Delete", new { id = habit.HabitId})" class="more-menu__item" style="display: block;">Удалить</a>
-                <!--
-            <h4 class="more-menu__item">Удалить</h4>
-            <h4 class="more-menu__item">Завершить</h4>
-            -->
-            </div>
-        </div>
-        <div class="card__week week">
-            @Html.Partial("_WeekPartialView", habit.Week)
-        </div>
-            
-
-            <div class="card__chain-count chain-count">
-                <img src="~/Content/Images/watch.svg" alt="" class="chain-count__watch">
-                <h4 class="chain-count__days">@habit.ChainLength</h4>
-            </div>
-
-            <div class="card__progress"></div>
-        </div>
-
-        <div class="habit-preview-container__goal card">
-            <div class="card__create">
-                <button class="card__create-btn create-btn not-implemented">
-                    <svg class="card__create-icon create-btn__icon--big" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="card__create-icon-path create-btn__path" fill-rule="evenodd" clip-rule="evenodd" d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#4D4A51" />
-                    </svg>
-                </button>
-                <div class="card__create-title">У этой привычки нет целей</div>
-            </div>
-        </div>
-
-        <!--
-    <div class="habit-preview-container__goal card">
-        <div class="card__header">
-            <h3 class="card__name">Делать зарядку 5 дней подяд</h3>
-            <button class="card__more-button more-menu-button">
-                <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
-            </button>
-            <div class="card__more-menu more-menu">
-                <h4 class="more-menu__item">Удалить</h4>
-                <h4 class="more-menu__item">Завершить</h4>
-            </div>
-        </div>
-        <div class="card__goal goal">
-            <div class="goal__day day day--with-name day--goal">
-                <h5 class="day__progress">70%</h5>
-            </div>
-            <div class="goal__progress goal__progress--margin"></div>
-        </div>
-    </div>
-        -->
-    </div>
+    <h3 class="main-container__placeholder">У вас пока нет привычек.<br> Начните формировать новые уже сейчас.</h3>
 }
+else
+{
+    foreach (var habit in Model)
+    {
+        <div class="habit-preview-container">
+            <div class="habit-preview-container__habit card">
+                <div class="card__header">
+                    <a href="@Url.Action("Index", "Habit", new { habitId = habit.HabitId })" class="card__name">@habit.HabitName</a>
+                    <button class="card__more-button more-menu-button">
+                        <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
+                    </button>
+                    <div class="card__more-menu more-menu">
+                        <a href="@Url.Action("Delete", new { id = habit.HabitId})" class="more-menu__item" style="display: block;">Удалить</a>
+                        <!--
+                        <h4 class="more-menu__item">Удалить</h4>
+                        <h4 class="more-menu__item">Завершить</h4>
+                        -->
+                    </div>
+                </div>
+                <div class="card__week week">
+                    @Html.Partial("_WeekPartialView", habit.Week)
+                </div>
+
+
+                <div class="card__chain-count chain-count">
+                    <img src="~/Content/Images/watch.svg" alt="" class="chain-count__watch">
+                    <h4 class="chain-count__days">@habit.ChainLength</h4>
+                </div>
+
+                <div class="card__progress"></div>
+            </div>
+
+            <div class="habit-preview-container__goal card">
+                <div class="card__create">
+                    <button class="card__create-btn create-btn not-implemented">
+                        <svg class="card__create-icon create-btn__icon--big" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="card__create-icon-path create-btn__path" fill-rule="evenodd" clip-rule="evenodd" d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#4D4A51" />
+                        </svg>
+                    </button>
+                    <div class="card__create-title">У этой привычки нет целей</div>
+                </div>
+            </div>
+
+            <!--
+            <div class="habit-preview-container__goal card">
+                <div class="card__header">
+                    <h3 class="card__name">Делать зарядку 5 дней подяд</h3>
+                    <button class="card__more-button more-menu-button">
+                        <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
+                    </button>
+                    <div class="card__more-menu more-menu">
+                        <h4 class="more-menu__item">Удалить</h4>
+                        <h4 class="more-menu__item">Завершить</h4>
+                    </div>
+                </div>
+                <div class="card__goal goal">
+                    <div class="goal__day day day--with-name day--goal">
+                        <h5 class="day__progress">70%</h5>
+                    </div>
+                    <div class="goal__progress goal__progress--margin"></div>
+                </div>
+            </div>
+                -->
+        </div>
+    }
+}
+
 
