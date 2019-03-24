@@ -301,6 +301,7 @@
     <Content Include="Views\Shared\_HabitCardsPartial.cshtml" />
     <Content Include="Views\Habit\Index.cshtml" />
     <Content Include="Views\Shared\_CalendarPartialView.cshtml" />
+    <Content Include="Views\Shared\_WeekPartialViewCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

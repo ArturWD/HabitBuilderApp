@@ -1,0 +1,48 @@
+﻿@model  ICollection<HabitBuilder.Core.ViewModels.DayViewModel>
+
+
+<div class="week__days">
+
+    @foreach (var day in Model)
+    {
+        if (day.DayStatus == "disabled")
+        {
+            <div class="day day--disabled day--with-name">
+            </div>
+        }
+        else 
+        {
+            <div class="day day--@day.DayStatus day--with-name" data-identity="@day.DayId">
+                <h5 class="day__date">@day.Date.Day</h5>
+                <h5 class="day__name">@day.Date.ToString("ddd")</h5>
+            </div>
+        }
+
+    }
+
+</div>
+<div class="week__mark-options-container">
+    <div class="week__mark-options mark-options mark-options--origin-1" data-identity="">
+        <div class="mark-options__option option--success">
+            <img src="~/Content/Images/ok.svg" alt="" class="mark-options__option-icon">
+            <h4 class="mark-options__option-name">Выполнено</h4>
+        </div>
+        <div class="mark-options__option option--fail">
+            <img src="~/Content/Images/close-white.svg" alt="" class="mark-options__option-icon">
+            <h4 class="mark-options__option-name">Не выполнено</h4>
+        </div>
+        <div class="mark-options__option">
+            <img src="~/Content/Images/skip.svg" alt="" class="mark-options__option-icon">
+            <h4 class="mark-options__option-name">Пропустить</h4>
+        </div>
+        <!--
+        <div class="mark-options__option option--note">
+            <svg class="mark-options__option-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.020155 14.3302L0 18.2605C0 18.4822 0.0806202 18.7039 0.241861 18.8651C0.403101 19.0264 0.604651 19.107 0.826357 19.107L4.73643 19.0868C4.95814 19.0868 5.15969 19.0062 5.32093 18.845L18.8248 5.34109C19.1473 5.0186 19.1473 4.49457 18.8248 4.15194L14.955 0.24186C14.6326 -0.0806202 14.1085 -0.0806202 13.7659 0.24186L11.0651 2.96279L0.262016 13.7457C0.12093 13.907 0.020155 14.1085 0.020155 14.3302ZM14.3705 2.0155L17.0915 4.73643L15.5597 6.26822L12.8388 3.54729L14.3705 2.0155ZM1.69302 14.693L11.6496 4.73643L14.3705 7.45736L4.41395 17.3938L1.67287 17.414L1.69302 14.693Z" fill="#4D4A51" />
+            </svg>
+            <h4 class="mark-options__option-name">Заметка</h4>
+        </div>
+            -->
+    </div>
+</div>
+

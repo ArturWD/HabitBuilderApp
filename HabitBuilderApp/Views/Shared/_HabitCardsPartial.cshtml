@@ -8,7 +8,7 @@ else
 {
     foreach (var habit in Model)
     {
-        <div class="habit-preview-container">
+        <div class="habit-preview-container" data-category="@habit.Category">
             <div class="habit-preview-container__habit card">
                 <div class="card__header">
                     <a href="@Url.Action("Index", "Habit", new { habitId = habit.HabitId })" class="card__name">@habit.HabitName</a>
@@ -24,7 +24,7 @@ else
                     </div>
                 </div>
                 <div class="card__week week">
-                    @Html.Partial("_WeekPartialView", habit.Week)
+                    @Html.Partial("_WeekPartialViewCard", habit.Week)
                 </div>
 
 

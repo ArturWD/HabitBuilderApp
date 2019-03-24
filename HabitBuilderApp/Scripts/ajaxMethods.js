@@ -41,8 +41,20 @@
 
     }; 
 
+    $('.categories__category:not(.categories__edit)').on('click', function (e) {
+        var $this = $(e.currentTarget);
+        $this.siblings().removeClass('categories__category--active');
+        $this.addClass('categories__category--active');
+        if ($this.find('.menu-option__name').text() != 'Все категории') {
+            $(".habit-preview-container").hide();
+            $('.habit-preview-container[data-category="' + $this.find('.menu-option__name').text()+'"]').show();
+        } else {
+            $(".habit-preview-container").show();
+        }
+    });
 
-    
+
+
 
     $('.not-implemented').on('click', function () {
         alert('Спасибо за проявленный интерес. Эта функция будет добавлена позже!');

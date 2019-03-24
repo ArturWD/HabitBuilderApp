@@ -25,6 +25,10 @@ namespace HabitBuilder.Core.ViewModels
             Reasons = dbHabit.Reasons;
             Category = dbHabit.Category;
             Months = GetMonths(dbHabit.DayStatuses);
+            if(Category.CategoryName == "")
+            {
+                Category.CategoryName = "Без категории";
+            }
 
         }
 

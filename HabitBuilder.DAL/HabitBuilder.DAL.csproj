@@ -49,13 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\201902021449211_initial.cs" />
-    <Compile Include="Migrations\201902021449211_initial.Designer.cs">
-      <DependentUpon>201902021449211_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902111532494_remove-dates.cs" />
-    <Compile Include="Migrations\201902111532494_remove-dates.Designer.cs">
-      <DependentUpon>201902111532494_remove-dates.cs</DependentUpon>
+    <Compile Include="Migrations\201903240755115_initial.cs" />
+    <Compile Include="Migrations\201903240755115_initial.Designer.cs">
+      <DependentUpon>201903240755115_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,11 +67,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902021449211_initial.resx">
-      <DependentUpon>201902021449211_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902111532494_remove-dates.resx">
-      <DependentUpon>201902111532494_remove-dates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903240755115_initial.resx">
+      <DependentUpon>201903240755115_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

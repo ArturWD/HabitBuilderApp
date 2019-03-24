@@ -29,6 +29,14 @@ namespace HabitBuilder.Services
                 habitView.ChainLength = CountChainLength(habit);
                 habitView.Progress =  CountChainLength(habit)/21;
                 habitView.Week = GetLastWeek(habit);
+                if(habit.Category.CategoryName == "")
+                {
+                    habitView.Category = "Без категории";
+                }
+                else
+                {
+                    habitView.Category = habit.Category.CategoryName;
+                }
 
                 habits.Add(habitView);
             }
@@ -139,7 +147,7 @@ namespace HabitBuilder.Services
                 {
                     DayViewModel day = new DayViewModel();
                     day.DayStatus = "disabled";
-
+                    day.WithDay = true;
                     days.Add(day);
                 }
             }

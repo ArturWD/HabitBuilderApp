@@ -26,6 +26,12 @@ namespace HabitBuilder.Core.Models
         public Habit()
         {
             DayStatuses = new List<DayStatus>();
+            //Category = new Category { CategoryName = "" };
+        }
+        public Habit(bool withcat)
+        {
+            DayStatuses = new List<DayStatus>();
+            Category = new Category { CategoryName = "" };
         }
 
     }

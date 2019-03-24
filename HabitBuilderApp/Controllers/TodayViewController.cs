@@ -24,11 +24,12 @@ namespace HabitBuilderApp.Controllers
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             UserProfile user = db.UserProfiles.First(u => u.UserProfileId == userId);
             dm.SetStatusesAll(user);
-            db.SaveChanges();
+            //db.SaveChanges();
 
             UserProfile user2 = db.UserProfiles.First(u => u.UserProfileId == userId);
             var dm2 = new DayManager(db);
             var habits = dm2.GetHabits(user2);
+            ViewBag.Categories = user2.Habits.Where(h=> h.Category.CategoryName != "").Select(h => h.Category).Distinct();
             return View(habits);
         }
         public ActionResult LogOff()
@@ -38,27 +39,47 @@ namespace HabitBuilderApp.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
-        public ActionResult Create(string HabitName, string HabitDescription, string[] Reasons, int[] Schedule)
+        public ActionResult Create(string HabitName, string HabitDescription, string[] Reasons, int[] Schedule, string HabitCategory)
         {
             int id = Int32.Parse(User.Identity.GetUserId());
-            Habit habit = new Habit();
+            UserProfile user = db.UserProfiles.First(u => u.UserProfileId == id);
+            Habit habit = new Habit(true);
             habit.HabitName = HabitName;
             habit.Description = HabitDescription;
             habit.Reasons = Reasons.GetReasons();
-            habit.Category = new Category{CategoryName = "Без категории" };
+            if (HabitCategory != "" && HabitCategory != null)
+            {
+                string formattedCategory = HabitCategory.Trim(' ').ToLower().Replace("  ", " ");
+                if(!user.Categories.Select(c=> c.CategoryName).Contains(formattedCategory))
+                {
+                    Category newCategory = new Category();
+                    newCategory.CategoryName = formattedCategory;
+                    user.Categories.Add(newCategory);
+                    db.SaveChanges();
+                }
+                habit.Category = db.UserProfiles.First(u => u.UserProfileId == id).Categories.First(c => c.CategoryName == formattedCategory);
+            }
+            
             
             List<Day> days = new List<Day>();
             List<Day> dbDays = db.Days.ToList();
-            foreach (int day in Schedule)
+            if(Schedule != null)
             {
-                Day dayObj = dbDays.First(d => d.DayNumber == day);
+                foreach (int day in Schedule)
+                {
+                    Day dayObj = dbDays.First(d => d.DayNumber == day);
+                    days.Add(dayObj);
+                }
+            }
+            else
+            {
+                Day dayObj = dbDays.First(d => d.DayNumber == 1);
                 days.Add(dayObj);
             }
+            
 
             habit.Days = days;
 
-
-            UserProfile user = db.UserProfiles.First(u => u.UserProfileId == id);
             
             DayStatus status = new DayStatus();
             status.StatusDate = DateTime.Now;
@@ -68,6 +89,7 @@ namespace HabitBuilderApp.Controllers
             user.Habits.Add(habit);
             db.SaveChanges();
             
+
             return RedirectToAction("Index", "TodayView");
         }
 
@@ -80,7 +102,16 @@ namespace HabitBuilderApp.Controllers
 
             var habitToRemove = db.Habits.First(h => h.HabitId == id);
 
-            user.Habits.Remove(habitToRemove);
+            if (user.Habits.Where(c => c.Category.CategoryName == habitToRemove.Category.CategoryName).Count() == 1)
+            {
+                user.Habits.Remove(habitToRemove);
+                user.Categories.Remove(user.Categories.First(c => c.CategoryName == habitToRemove.Category.CategoryName));
+            }
+            else
+            {
+                user.Habits.Remove(habitToRemove);
+            }
+            
 
             db.SaveChanges();
 

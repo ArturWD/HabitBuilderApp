@@ -13,5 +13,6 @@ namespace HabitBuilder.Core.ViewModels
         public ICollection<DayViewModel> Week { get; set; }
         public int ChainLength { get; set; }
         public int Progress { get; set; }
+        public string Category { get; set; }
     }
 }

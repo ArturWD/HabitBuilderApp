@@ -29,23 +29,30 @@
             @Html.AntiForgeryToken()
 
             <div class="input">
-                <input class="input__field" type="text" required name="HabitName">
+                <input class="input__field" type="text" required name="HabitName" maxlength="100">
                 <span class="input__highlight"></span>
                 <span class="input__bar"></span>
                 <label class="input__label">Название</label>
             </div>
 
             <div class="input">
-                <textarea class="input__field" rows="4" required pattern="^$|*" name="HabitDescription"></textarea>
+                <textarea class="input__field" rows="4" required pattern="^$|*" name="HabitDescription" maxlength="1000"></textarea>
                 <span class="input__highlight"></span>
                 <span class="input__bar"></span>
                 <label class="input__label">Описание</label>
             </div>
 
+            <div class="input">
+                <input class="input__field" type="text" name="HabitCategory"  maxlength="40">
+                <span class="input__highlight"></span>
+                <span class="input__bar"></span>
+                <label class="input__label">Категория</label>
+            </div>
+
             <h3 class="create-form__group-title">Причины</h3>
             <div class="create-form__reasons">
                 <div class="input">
-                    <input class="input__field" type="text" required pattern=".*" name="Reasons[]">
+                    <input class="input__field" type="text" required pattern=".*" name="Reasons[]" maxlength="100">
                     <span class="input__highlight"></span>
                     <span class="input__bar"></span>
                     <label class="input__label">Причина</label>

@@ -19,5 +19,15 @@
 
 
 <div class="calendar-view__pie">
+    <h5 class="pie__description-title">Описание</h5>
+    <h4 class="pie__description">@Model.Description</h4>
 
+    <h4 class="pie__category-title">Категория</h4>
+    <h4 class="pie__category">@Model.Category</h4>
+
+    <h5 class="pie__reason-title">Причины</h5>
+    @foreach (var reason in Model.Reasons)
+    {
+        <h5 class="pie__reason">@reason.ReasonText</h5>
+    }
 </div>
