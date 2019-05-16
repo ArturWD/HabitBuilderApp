@@ -62,6 +62,7 @@
     <Compile Include="ViewModels\HabitCardViewModel.cs" />
     <Compile Include="ViewModels\HabitViewModel.cs" />
     <Compile Include="ViewModels\MonthViewModel.cs" />
+    <Compile Include="ViewModels\NoteView.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

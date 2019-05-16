@@ -76,7 +76,7 @@ namespace HabitBuilder.Core.ViewModels
                 day.DayStatus = dbDays[i].Status.StatusName;
                 day.DayId = dbDays[i].DayStatusId;
                 day.Date = dbDays[i].StatusDate;
-                day.HasNote = dbDays[i].NoteHeadline == "" && dbDays[i].Note == "";
+                day.HasNote = (dbDays[i].NoteHeadline != null && dbDays[i].NoteHeadline != "") || (dbDays[i].Note != null && dbDays[i].Note != "");
                 if (weekNumber == 1) day.WithDay = true;
                 i++;
             }
@@ -86,6 +86,7 @@ namespace HabitBuilder.Core.ViewModels
                 if (weekNumber == 1)
                 {
                     day.WithDay = true;
+                    if (dayOfWeek == 0) dayOfWeek++;
                     day.Date = DateTime.ParseExact("2018-10-0" + (dayOfWeek) + " 14:40:52,531", "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
                 }   
             }

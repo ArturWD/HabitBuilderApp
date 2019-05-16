@@ -18,17 +18,23 @@
 
 
 
-<div class="main-container">
+<div class="main-container" data-habitid="@Model.HabitId">
     <div class="habit-tabs-container">
-        <!--<a href="#note" class="habit-tab">Заметки</a>-->
+        <a href="#note" class="habit-tab">Заметки</a>
         <a href="#calendar" class="habit-tab habit-tab--active">Календарь</a>
         <!--<a href="#goal" class="habit-tab">Цели</a>-->
     </div>
 
     <div class="habit-carousel owl-carousel">
-        <!--<div class="note-view carousel-item" data-hash="note">
+        <div class="note-view carousel-item" data-hash="note">
 
-    </div>-->
+            <div class="preloader">
+                <div class="preloader__circle"></div>
+                <div class="preloader__circle"></div>
+                <div class="preloader__circle"></div>
+            </div>
+
+        </div>
 
 
 
@@ -40,9 +46,13 @@
 
         <!--<div class="goal-view carousel-item" data-hash="goal">
 
-    </div>-->
+        </div>-->
 
     </div>
 
 
+
+
 </div>
+
+@Html.Partial("_EditNotePartialView")

@@ -261,6 +261,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\note.js" />
+    <Content Include="Scripts\noteAlternative.js" />
     <Content Include="Scripts\scripts.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -302,6 +304,7 @@
     <Content Include="Views\Habit\Index.cshtml" />
     <Content Include="Views\Shared\_CalendarPartialView.cshtml" />
     <Content Include="Views\Shared\_WeekPartialViewCard.cshtml" />
+    <Content Include="Views\Shared\_EditNotePartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

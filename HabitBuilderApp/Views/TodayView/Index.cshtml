@@ -30,107 +30,108 @@
             @Html.Partial("_HabitCardsPartial", Model)
 
             <!--
-    <div class="habit-preview-container">
-        <div class="habit-preview-container__habit card">
-            <div class="card__header">
-                <a href="habit.html" class="card__name">Зарядка</a>
-                <button class="card__more-button more-menu-button">
-                    <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
-                </button>
-                <div class="card__more-menu more-menu">
-                    <h4 class="more-menu__item">Удалить</h4>
-                    <h4 class="more-menu__item">Завершить</h4>
-                </div>
-            </div>
-            <div class="card__week week">
-                <div class="week__days">
-                    <div class="day day--success day--with-name" data-identity="1">
-                        <h5 class="day__date">8</h5>
-                        <h5 class="day__name">Пн</h5>
-                    </div>
-
-                    <div class="day day--success day--with-name" data-identity="2">
-                        <h5 class="day__date">9</h5>
-                        <h5 class="day__name">Вт</h5>
-                    </div>
-
-                    <div class="day day--skip day--with-name" data-identity="3">
-                        <h5 class="day__date">10</h5>
-                        <h5 class="day__name">Ср</h5>
-                    </div>
-                    <div class="day day--success day--with-name" data-identity="4">
-                        <h5 class="day__date">11</h5>
-                        <h5 class="day__name">Чт</h5>
-                    </div>
-                    <div class="day day--fail day--with-name" data-identity="5">
-                        <h5 class="day__date">12</h5>
-                        <h5 class="day__name">Пт</h5>
-                    </div>
-                    <div class="day day--success day--with-name" data-identity="6">
-                        <h5 class="day__date">13</h5>
-                        <h5 class="day__name">Сб</h5>
-                    </div>
-                    <div class="day day--success day--with-name" data-identity="7">
-                        <h5 class="day__date">14</h5>
-                        <h5 class="day__name">Вс</h5>
-                    </div>
-
-                </div>
-                <div class="week__mark-options-container">
-                    <div class="week__mark-options mark-options mark-options--origin-1" data-identity="">
-                        <div class="mark-options__option option--success">
-                            <img src="~/Content/Images/ok.svg" alt="" class="mark-options__option-icon">
-                            <h4 class="mark-options__option-name">Выполнено</h4>
-                        </div>
-                        <div class="mark-options__option option--fail">
-                            <img src="~/Content/Images/close-white.svg" alt="" class="mark-options__option-icon">
-                            <h4 class="mark-options__option-name">Не выполнено</h4>
-                        </div>
-                        <div class="mark-options__option">
-                            <img src="~/Content/Images/skip.svg" alt="" class="mark-options__option-icon">
-                            <h4 class="mark-options__option-name">Пропустить</h4>
-                        </div>
-                        <div class="mark-options__option option--note">
-                            <svg class="mark-options__option-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.020155 14.3302L0 18.2605C0 18.4822 0.0806202 18.7039 0.241861 18.8651C0.403101 19.0264 0.604651 19.107 0.826357 19.107L4.73643 19.0868C4.95814 19.0868 5.15969 19.0062 5.32093 18.845L18.8248 5.34109C19.1473 5.0186 19.1473 4.49457 18.8248 4.15194L14.955 0.24186C14.6326 -0.0806202 14.1085 -0.0806202 13.7659 0.24186L11.0651 2.96279L0.262016 13.7457C0.12093 13.907 0.020155 14.1085 0.020155 14.3302ZM14.3705 2.0155L17.0915 4.73643L15.5597 6.26822L12.8388 3.54729L14.3705 2.0155ZM1.69302 14.693L11.6496 4.73643L14.3705 7.45736L4.41395 17.3938L1.67287 17.414L1.69302 14.693Z" fill="#4D4A51" />
-                            </svg>
-                            <h4 class="mark-options__option-name">Заметка</h4>
+            <div class="habit-preview-container">
+                <div class="habit-preview-container__habit card">
+                    <div class="card__header">
+                        <a href="habit.html" class="card__name">Зарядка</a>
+                        <button class="card__more-button more-menu-button">
+                            <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
+                        </button>
+                        <div class="card__more-menu more-menu">
+                            <h4 class="more-menu__item">Удалить</h4>
+                            <h4 class="more-menu__item">Завершить</h4>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="card__chain-count chain-count">
-                <img src="~/Content/Images/watch.svg" alt="" class="chain-count__watch">
-                <h4 class="chain-count__days">15</h4>
-            </div>
+                    <div class="card__week week">
+                        <div class="week__days">
+                            <div class="day day--success day--with-name" data-identity="1">
+                                <h5 class="day__date">8</h5>
+                                <h5 class="day__name">Пн</h5>
+                            </div>
 
-            <div class="card__progress"></div>
-        </div>
-        <div class="habit-preview-container__goal card">
-            <div class="card__header">
-                <h3 class="card__name">Делать зарядку 5 дней подяд</h3>
-                <button class="card__more-button more-menu-button">
-                    <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
-                </button>
-                <div class="card__more-menu more-menu">
-                    <h4 class="more-menu__item">Удалить</h4>
-                    <h4 class="more-menu__item">Завершить</h4>
+                            <div class="day day--success day--with-name" data-identity="2">
+                                <h5 class="day__date">9</h5>
+                                <h5 class="day__name">Вт</h5>
+                            </div>
+
+                            <div class="day day--skip day--with-name" data-identity="3">
+                                <h5 class="day__date">10</h5>
+                                <h5 class="day__name">Ср</h5>
+                            </div>
+                            <div class="day day--success day--with-name" data-identity="4">
+                                <h5 class="day__date">11</h5>
+                                <h5 class="day__name">Чт</h5>
+                            </div>
+                            <div class="day day--fail day--with-name" data-identity="5">
+                                <h5 class="day__date">12</h5>
+                                <h5 class="day__name">Пт</h5>
+                            </div>
+                            <div class="day day--success day--with-name" data-identity="6">
+                                <h5 class="day__date">13</h5>
+                                <h5 class="day__name">Сб</h5>
+                            </div>
+                            <div class="day day--success day--with-name" data-identity="7">
+                                <h5 class="day__date">14</h5>
+                                <h5 class="day__name">Вс</h5>
+                            </div>
+
+                        </div>
+                        <div class="week__mark-options-container">
+                            <div class="week__mark-options mark-options mark-options--origin-1" data-identity="">
+                                <div class="mark-options__option option--success">
+                                    <img src="~/Content/Images/ok.svg" alt="" class="mark-options__option-icon">
+                                    <h4 class="mark-options__option-name">Выполнено</h4>
+                                </div>
+                                <div class="mark-options__option option--fail">
+                                    <img src="~/Content/Images/close-white.svg" alt="" class="mark-options__option-icon">
+                                    <h4 class="mark-options__option-name">Не выполнено</h4>
+                                </div>
+                                <div class="mark-options__option">
+                                    <img src="~/Content/Images/skip.svg" alt="" class="mark-options__option-icon">
+                                    <h4 class="mark-options__option-name">Пропустить</h4>
+                                </div>
+                                <div class="mark-options__option option--note">
+                                    <svg class="mark-options__option-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.020155 14.3302L0 18.2605C0 18.4822 0.0806202 18.7039 0.241861 18.8651C0.403101 19.0264 0.604651 19.107 0.826357 19.107L4.73643 19.0868C4.95814 19.0868 5.15969 19.0062 5.32093 18.845L18.8248 5.34109C19.1473 5.0186 19.1473 4.49457 18.8248 4.15194L14.955 0.24186C14.6326 -0.0806202 14.1085 -0.0806202 13.7659 0.24186L11.0651 2.96279L0.262016 13.7457C0.12093 13.907 0.020155 14.1085 0.020155 14.3302ZM14.3705 2.0155L17.0915 4.73643L15.5597 6.26822L12.8388 3.54729L14.3705 2.0155ZM1.69302 14.693L11.6496 4.73643L14.3705 7.45736L4.41395 17.3938L1.67287 17.414L1.69302 14.693Z" fill="#4D4A51" />
+                                    </svg>
+                                    <h4 class="mark-options__option-name">Заметка</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__chain-count chain-count">
+                        <img src="~/Content/Images/watch.svg" alt="" class="chain-count__watch">
+                        <h4 class="chain-count__days">15</h4>
+                    </div>
+
+                    <div class="card__progress"></div>
+                </div>
+                <div class="habit-preview-container__goal card">
+                    <div class="card__header">
+                        <h3 class="card__name">Делать зарядку 5 дней подяд</h3>
+                        <button class="card__more-button more-menu-button">
+                            <img src="~/Content/Images/more.svg" alt="" class="card__more-icon">
+                        </button>
+                        <div class="card__more-menu more-menu">
+                            <h4 class="more-menu__item">Удалить</h4>
+                            <h4 class="more-menu__item">Завершить</h4>
+                        </div>
+                    </div>
+                    <div class="card__goal goal">
+                        <div class="goal__day day day--with-name day--goal">
+                            <h5 class="day__progress">70%</h5>
+                        </div>
+                        <div class="goal__progress goal__progress--margin"></div>
+                    </div>
                 </div>
             </div>
-            <div class="card__goal goal">
-                <div class="goal__day day day--with-name day--goal">
-                    <h5 class="day__progress">70%</h5>
-                </div>
-                <div class="goal__progress goal__progress--margin"></div>
-            </div>
-        </div>
-    </div>
-    -->
+            -->
         </div>
     </div>
 </section>
 
 @Html.Partial("_CreateHabitPartial")
+@Html.Partial("_EditNotePartialView")
 
 
 

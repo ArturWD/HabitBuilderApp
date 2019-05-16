@@ -6,15 +6,18 @@
         var options = $this.closest('.mark-options');
         var id = options.attr('data-identity');
         var day = $('.day[data-identity=' + id + ']');
-        day.removeClass('day--success day--fail day--skip day--unmarked');
+        
 
         if ($this.hasClass('option--fail')) {
+            day.removeClass('day--success day--fail day--skip day--unmarked');
             day.addClass('day--fail');
             ChangeStatus(id, "fail");
         } else if ($this.hasClass('option--success')) {
+            day.removeClass('day--success day--fail day--skip day--unmarked');
             day.addClass('day--success');
             ChangeStatus(id, "success");
-        } else {
+        } else if ($this.hasClass('option--skip')) {
+            day.removeClass('day--success day--fail day--skip day--unmarked');
             day.addClass('day--skip');
             ChangeStatus(id, "skip");
         }
@@ -47,9 +50,9 @@
         $this.addClass('categories__category--active');
         if ($this.find('.menu-option__name').text() != 'Все категории') {
             $(".habit-preview-container").hide();
-            $('.habit-preview-container[data-category="' + $this.find('.menu-option__name').text()+'"]').show();
+            $('.habit-preview-container[data-category="' + $this.find('.menu-option__name').text() + '"]').css('display', 'flex');
         } else {
-            $(".habit-preview-container").show();
+            $(".habit-preview-container").css('display', 'flex');
         }
     });
 

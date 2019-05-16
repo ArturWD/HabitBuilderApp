@@ -29,6 +29,7 @@ namespace HabitBuilder.Services
                 habitView.ChainLength = CountChainLength(habit);
                 habitView.Progress =  CountChainLength(habit)/21;
                 habitView.Week = GetLastWeek(habit);
+                habitView.Description = habit.Description.Length > 240 ? habit.Description.Substring(0, 140) + "..." : habit.Description;
                 if(habit.Category.CategoryName == "")
                 {
                     habitView.Category = "Без категории";
@@ -135,7 +136,7 @@ namespace HabitBuilder.Services
                 day.DayStatus = date.Status.StatusName;
                 day.DayId = date.DayStatusId;
                 day.Date = date.StatusDate;
-                day.HasNote = date.NoteHeadline == "" && date.Note == "";
+                day.HasNote = (date.NoteHeadline != null && date.NoteHeadline != "") || (date.Note != null && date.Note != "");
                 day.WithDay = true;
                 days.Add(day);
             }
@@ -168,6 +169,31 @@ namespace HabitBuilder.Services
                 db.SaveChanges();
             }
             catch { }         
+        }
+
+        public List<NoteView> GetAllNotes(int habitId)
+        {
+            List<NoteView> notes = new List<NoteView>();
+            var habit = db.Habits.FirstOrDefault(h => h.HabitId == habitId);
+            foreach (var dayStatus in habit.DayStatuses)
+            {
+                if((dayStatus.NoteHeadline != null && dayStatus.NoteHeadline != "") || (dayStatus.Note != null && dayStatus.Note != ""))
+                {
+                    NoteView note = new NoteView
+                    {
+                        DayId = dayStatus.DayStatusId,
+                        Date = dayStatus.StatusDate,
+                        NoteText = dayStatus.Note == null  ? "" : dayStatus.Note,
+                        Headline = dayStatus.NoteHeadline == null || dayStatus.NoteHeadline=="" ? "Заголовок" : dayStatus.NoteHeadline
+                    };
+
+                    notes.Add(note);
+                }
+                
+            }
+            notes.Reverse();
+
+            return notes;
         }
         
     }
