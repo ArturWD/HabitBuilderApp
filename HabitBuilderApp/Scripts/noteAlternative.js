@@ -51,6 +51,8 @@ $('#closeNotePopup').on('click', function () {
 });
 
 function saveNote(e) {
+
+    console.warn('SAVING');
     e.preventDefault();
     const editForm = document.getElementById('editNoteForm');
 
@@ -72,13 +74,17 @@ function saveNote(e) {
         });
 
     request.done(function () {
-        GetAllNotes(true);
-
+        if (document.querySelector('.note-view')) {
+            GetAllNotes(true);
+        }
+        
+        console.warn('SUCCESSFULLY SAVED');
         if (editForm.elements.NoteHeader.value != '' || editForm.elements.NoteText.value != '') {
             day.classList.remove('day--note');
             day.classList.add('day--note');
         } else {
             day.classList.remove('day--note');
+            console.warn('MARK NOTE');
         }
     });
 
