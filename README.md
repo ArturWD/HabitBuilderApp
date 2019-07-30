@@ -1,11 +1,11 @@
-# HabitBuilder - Take your habits under control
+# HabitBuilder - Take your habits under control (backend project)
 Habit builder is the app for tracking progress of your personal habits. You can use this app for forming new good habits or breaking bad ones.
 
 ### Key features
 * Add notes
 * Mark statuses for all days and track your progress
 * Brief overview of all habits
-* Use on all devices! Phones, tablets, desctops - yoy choose!
+* Use on all devices! Phones, tablets, desctops - you choose!
 * Good design
 
 ## Demonstration of app's functions
