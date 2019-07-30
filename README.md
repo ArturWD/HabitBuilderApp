@@ -14,7 +14,7 @@ Habit builder is the app for tracking progress of your personal habits. You can 
 ![Landing page](/Demo-HB/Landing.jpg)
 
 ### Authorization
-Users have to create an account for getting acces to the app
+Users have to create an account for getting access to the app
 ![Login](/Demo-HB/Login.jpg)
 
 ### Home screen
